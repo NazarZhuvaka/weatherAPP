@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <script src="./js/createElements.js"></script>
+    <script src="./js/requests.js" defer></script>
+    <script src="./js/index.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <aside class="select-city">
+            <select>
+                <option value="Kiev">Kiev</option>
+                <option value="Kharkiv">Kharkiv</option>
+                <option value="Lviv">Lviv</option>
+            </select>
+            <button class="btn">Select</button>
+        </aside>
+        <main class="main-weather">
+            <p class="city-name"></p>
+            <h1 class="city-temp"></h2>
+            <p class="city-main"></p>
+            <div class="city-geo">
+                <p class="city-geo-h"></p>
+                <p class="city-geo-l"></p>
+            </div>
+            <ul class="weathers-list">
+            </ul>
+        </main>
+    </div>
+</body>
+</html>
