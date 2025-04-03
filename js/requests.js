@@ -1,26 +1,16 @@
-API_BASE = "https://api.openweathermap.org/data/2.5/weather";
-API_KEY = "";
-
-function requestAPI(cityName) {
-  const url = `${API_BASE}?q=${cityName}&appid=${API_KEY}&units=metric`;
+function fetchWeather(endpoint, cityName, callback) {
+  const url = `${API_BASE}${endpoint}?q=${cityName}&appid=${API_KEY}&units=metric`;
 
   fetch(url)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      displayWeather(data);
-    });
+    .then(response => response.json())
+    .then(data => callback(data))
+    .catch(error => console.error(`Loading error ${endpoint}:`, error));
+}
+
+function requestAPI(cityName) {
+  fetchWeather("weather", cityName, displayWeather);
 }
 
 function requestForecastAPI(cityName) {
-  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=metric`;
-  fetch(url)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-        appendToRoot(data);
-    });
+  fetchWeather("forecast", cityName, appendToRoot);
 }
-
